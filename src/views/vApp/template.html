@@ -17,8 +17,7 @@
       </div>
     </div>
     <div id="nva-body">
-      <Component_ListItem />
-      <Component_ListItem />
+      <Component_ListItem v-for="(item, index) in 8" :key="index" />
     </div>
   </div>
 </div>
