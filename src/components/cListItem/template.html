@@ -1,6 +1,6 @@
 <div class="todo-item">
   <div class="todo-check-box" @click="onDoneHandler">
-    <div></div>
+    <div :class="done === true ? 'check' : ''"></div>
   </div>
   <div class="todo-text">
     <span :class="done === true ? 'done-text' : ''">{{content}}</span>

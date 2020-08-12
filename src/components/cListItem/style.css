@@ -63,10 +63,15 @@
   top: 15px;
   width: 10px;
   height: 5px;
-  border-left: 3px solid #72727298;
-  border-bottom: 3px solid #72727298;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid transparent;
   -webkit-transform: rotate(-40deg);
           transform: rotate(-40deg);
+}
+
+.todo-check-box div.check::before {
+  border-left: 3px solid #ad80c7;
+  border-bottom: 3px solid #ad80c7;
 }
 
 .todo-text {
