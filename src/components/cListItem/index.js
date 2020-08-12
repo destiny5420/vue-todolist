@@ -1,20 +1,17 @@
-import Component_ListItem from "@/components/cListItem/index.vue";
-
 export default {
-  name: "default",
+  name: "cListItem",
   props: {},
-  components: {
-    Component_ListItem
-  },
+  components: {},
   data: function() {
-    return {};
+    return {
+      content: "請在此輸入內容",
+      done: false
+    };
   },
   methods: {
-    onListHandler: function() {
-      console.log(" -- listHandler");
-    },
     onDoneHandler: function() {
-      console.log(" -- onDoneHandler");
+      console.log("-- onDoneHandler");
+      this.done = !this.done;
     }
   },
   computed: {},

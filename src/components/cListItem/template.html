@@ -1,0 +1,11 @@
+<div class="todo-item">
+  <div class="todo-check-box" @click="onDoneHandler">
+    <div></div>
+  </div>
+  <div class="todo-text">
+    <span :class="done === true ? 'done-text' : ''">{{content}}</span>
+  </div>
+  <div class="todo-del">
+    <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />
+  </div>
+</div>

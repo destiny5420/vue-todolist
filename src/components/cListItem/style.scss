@@ -1,0 +1,82 @@
+$todo-item-height: 40px;
+.todo-item {
+  padding: 10px;
+  height: $todo-item-height;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-items: stretch;
+}
+
+$todo_item_padding_RL: 10px;
+$todo_item_padding_TB: 10px;
+$todo_checkbox_vh: 16px;
+.todo-check-box {
+  flex: 1;
+  width: $todo_item_height;
+  // height: $todo_item_height;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    width: $todo_checkbox_vh;
+    height: $todo_checkbox_vh;
+    border: 2px solid #cccccc98;
+    border-radius: 35%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      width: 10px;
+      height: 5px;
+      border-left: 3px solid #72727298;
+      border-bottom: 3px solid #72727298;
+      transform: rotate(-40deg);
+    }
+  }
+}
+
+.todo-text {
+  flex: 4;
+  width: 150px;
+  // height: $todo_item_height;
+  display: inline-block;
+
+  text-align: left;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.todo-del {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: #cccccc98;
+
+    &:hover {
+      color: rgb(209, 104, 104);
+      cursor: pointer;
+    }
+  }
+}
+
+.done-text {
+  text-decoration: line-through;
+  color: #79797998;
+}

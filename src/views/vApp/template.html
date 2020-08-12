@@ -3,19 +3,22 @@
     <div id="nva-bar">
       <div class="choiceParent tl-rad">
         <div class="choiceItem">
-          <router-link to="/"
+          <router-link to="/list" @click="onListHandler"
             ><font-awesome-icon style="font-size: 25px;" icon="list"
           /></router-link>
         </div>
       </div>
       <div class="choiceParent tr-rad active">
         <div class="choiceItem">
-          <router-link to="/about"
+          <router-link to="/done" @click="onDoneHandler"
             ><font-awesome-icon style="font-size: 25px;" icon="calendar-check"
           /></router-link>
         </div>
       </div>
     </div>
-    <div id="nva-body"></div>
+    <div id="nva-body">
+      <Component_ListItem />
+      <Component_ListItem />
+    </div>
   </div>
 </div>
