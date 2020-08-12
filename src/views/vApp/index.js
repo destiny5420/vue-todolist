@@ -17,7 +17,12 @@ export default {
       console.log(" -- onDoneHandler");
     }
   },
-  computed: {},
+  computed: {
+    currentRouter: function() {
+      // return this.$route.name; for route
+      return this.$store.getters["currentRouter"]; // for vuex-route-sync
+    }
+  },
   // life cycle
   beforeCreate: function() {},
   created: function() {},

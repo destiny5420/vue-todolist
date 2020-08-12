@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "@/views/vApp/index.vue";
 import router from "@/router";
 import store from "@/store";
+import { sync } from "vuex-router-sync";
 
 // Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -12,10 +13,11 @@ import {
   faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
 library.add(faUserSecret, faList, faCalendarCheck, faTrashAlt);
-
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+// vuex-router-sync
+sync(store, router);
 
 Vue.config.productionTip = false;
 
@@ -26,14 +28,14 @@ new Vue({
 }).$mount("#app");
 
 router.beforeEach((to, from, next) => {
-  console.log(
-    "-- [ router.beforeEach ]\n/ to: ",
-    to,
-    "\n/ from: ",
-    from,
-    "\n/ next: ",
-    next
-  );
+  // console.log(
+  //   "-- [ router.beforeEach ]\n/ to: ",
+  //   to,
+  //   "\n/ from: ",
+  //   from,
+  //   "\n/ next: ",
+  //   next
+  // );
   next();
   // if (to.meta.requiresAuth) {
   //   let api = `${process.env.VUE_APP_APIPATH}/api/user/check`;

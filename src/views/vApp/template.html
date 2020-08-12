@@ -1,14 +1,20 @@
 <div id="app">
   <div id="nav">
     <div id="nva-bar">
-      <div class="choiceParent tl-rad">
+      <div
+        class="choiceParent tl-rad"
+        :class="{ 'active': currentRouter === 'List' }"
+      >
         <div class="choiceItem">
           <router-link to="/list" @click="onListHandler"
             ><font-awesome-icon style="font-size: 25px;" icon="list"
           /></router-link>
         </div>
       </div>
-      <div class="choiceParent tr-rad active">
+      <div
+        class="choiceParent tr-rad"
+        :class="{ 'active': currentRouter === 'Done' }"
+      >
         <div class="choiceItem">
           <router-link to="/done" @click="onDoneHandler"
             ><font-awesome-icon style="font-size: 25px;" icon="calendar-check"
@@ -17,7 +23,19 @@
       </div>
     </div>
     <div id="nva-body">
-      <Component_ListItem v-for="(item, index) in 8" :key="index" />
+      <Component_ListItem v-for="(item, index) in 10" :key="index" />
+    </div>
+  </div>
+  <div id="task">
+    <div id="task-btn"></div>
+    <div class="arrow_box">
+      <div class="arrow_box_area">
+        <div>
+          <div>What do you want to do?</div>
+          <input type="button" value="del" />
+        </div>
+        <input class="arrow_box_input" type="text" />
+      </div>
     </div>
   </div>
 </div>
