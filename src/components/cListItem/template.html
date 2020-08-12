@@ -5,7 +5,7 @@
   <div class="todo-text">
     <span :class="done === true ? 'done-text' : ''">{{content}}</span>
   </div>
-  <div class="todo-del">
+  <div class="todo-del" @click="onDeleteHandler">
     <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />
   </div>
 </div>

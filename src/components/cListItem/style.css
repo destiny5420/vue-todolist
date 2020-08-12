@@ -114,6 +114,8 @@
 
 .todo-del svg {
   color: #cccccc98;
+  -webkit-transition: color 0.1s linear 0s;
+  transition: color 0.1s linear 0s;
 }
 
 .todo-del svg:hover {

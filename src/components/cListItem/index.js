@@ -12,6 +12,9 @@ export default {
     onDoneHandler: function() {
       console.log("-- onDoneHandler");
       this.done = !this.done;
+    },
+    onDeleteHandler: function() {
+      console.log(" -- onDeleteHandler");
     }
   },
   computed: {},

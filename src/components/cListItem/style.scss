@@ -76,6 +76,8 @@ $todo_checkbox_vh: 16px;
   svg {
     color: #cccccc98;
 
+    transition: color 0.1s linear 0s;
+
     &:hover {
       color: rgb(209, 104, 104);
       cursor: pointer;
