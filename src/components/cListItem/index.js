@@ -17,7 +17,18 @@ export default {
       console.log(" -- onDeleteHandler");
     }
   },
-  computed: {},
+  computed: {
+    classText: function() {
+      return {
+        "done-text": this.done
+      };
+    },
+    classCheckBox: function() {
+      return {
+        check: this.done
+      };
+    }
+  },
   // life cycle
   beforeCreate: function() {},
   created: function() {},

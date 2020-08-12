@@ -1,9 +1,9 @@
 <div class="todo-item">
   <div class="todo-check-box" @click="onDoneHandler">
-    <div :class="done === true ? 'check' : ''"></div>
+    <div :class="classCheckBox"></div>
   </div>
   <div class="todo-text">
-    <span :class="done === true ? 'done-text' : ''">{{content}}</span>
+    <span :class="classText">{{content}}</span>
   </div>
   <div class="todo-del" @click="onDeleteHandler">
     <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />

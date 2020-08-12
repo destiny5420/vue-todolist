@@ -67,11 +67,59 @@
   border-bottom: 3px solid transparent;
   -webkit-transform: rotate(-40deg);
           transform: rotate(-40deg);
+  -webkit-animation: fadeOut linear 0.1s;
+          animation: fadeOut linear 0.1s;
 }
 
 .todo-check-box div.check::before {
   border-left: 3px solid #ad80c7;
   border-bottom: 3px solid #ad80c7;
+  -webkit-animation: fadeIn linear 0.1s;
+          animation: fadeIn linear 0.1s;
+}
+
+@-webkit-keyframes fadeOut {
+  to {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  from {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  from {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  to {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  to {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
 }
 
 .todo-text {
