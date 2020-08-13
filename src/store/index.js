@@ -48,6 +48,9 @@ export default new Vuex.Store({
     todoDatas: []
   },
   getters: {
+    currentRouteName: function(state) {
+      return state.route.name;
+    },
     dataByRoute: function(state) {
       return DataFilter[state.route.name](state.todoDatas).map(item => {
         state.todoDatas.indexOf(item);
