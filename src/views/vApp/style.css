@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "TCH-Light";
+  src: url("../../fonts/NotoSansCJKtc-Light.otf");
+}
+
+* {
+  font-family: "TCH-Light";
+}
+
 #app {
   height: 100vh;
   color: #2c3e50;
@@ -60,6 +69,13 @@
   border-radius: 50%;
   -webkit-box-shadow: 7px 7px 14px -3px #00000030;
           box-shadow: 7px 7px 14px -3px #00000030;
+  cursor: pointer;
+  -webkit-transition: background-color 0.15s linear 0s;
+  transition: background-color 0.15s linear 0s;
+}
+
+#task-btn:hover {
+  background-color: #dfaa48;
 }
 
 .choiceParent.active {
@@ -218,10 +234,33 @@
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
-  font-size: 20px;
+  font-size: 16px;
   width: calc(100% - (10px * 2));
   outline: none;
   border: 0px solid transparent;
   background-color: #bbbaba54;
+}
+
+.opacity-fede-in {
+  -webkit-animation: Opacity_FadeIn linear 0.2s;
+          animation: Opacity_FadeIn linear 0.2s;
+}
+
+@-webkit-keyframes Opacity_FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes Opacity_FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=style.css.map */

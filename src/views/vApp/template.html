@@ -31,14 +31,26 @@
     </div>
   </div>
   <div id="task">
-    <div id="task-btn"></div>
-    <div class="arrow_box">
+    <div id="task-btn" @click="onTaskHandler"></div>
+    <div
+      class="arrow_box"
+      :class="{ 'opacity-fede-in': taskPanel.open }"
+      v-if="taskPanel.open"
+    >
       <div class="arrow_box_area">
         <div>
           <div>What do you want to do?</div>
           <input type="button" value="del" />
         </div>
-        <input class="arrow_box_input" type="text" />
+        <input
+          class="arrow_box_input"
+          type="text"
+          :placeholder="taskPanel.placeholder"
+          v-focus
+          v-model="taskPanel.content"
+          @keyup.enter="onSubmitHandler"
+          @keyup.esc="_closeTaskPanel"
+        />
       </div>
     </div>
   </div>

@@ -2,12 +2,25 @@ import Component_ListItem from "@/components/cListItem/index.vue";
 
 export default {
   name: "vApp",
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
+      }
+    }
+  },
   props: {},
   components: {
     Component_ListItem
   },
   data: function() {
-    return {};
+    return {
+      taskPanel: {
+        open: false,
+        content: null,
+        placeholder: "你想要新增什麼事項呢?"
+      }
+    };
   },
   methods: {
     onListHandler: function() {
@@ -15,6 +28,24 @@ export default {
     },
     onDoneHandler: function() {
       console.log(" -- onDoneHandler");
+    },
+    onTaskHandler: function() {
+      console.log(" -- onDoneHandler");
+
+      if (this.taskPanel.open) {
+        this.onSubmitHandler();
+      } else {
+        this.taskPanel.open = !this.taskPanel.open;
+      }
+    },
+    onSubmitHandler: function() {
+      console.log(" -- onSubmitHandler / content: ", this.taskPanel.content);
+
+      this._closeTaskPanel();
+    },
+    _closeTaskPanel: function() {
+      this.taskPanel.open = false;
+      this.taskPanel.content = null;
     }
   },
   computed: {
