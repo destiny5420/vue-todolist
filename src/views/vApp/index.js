@@ -1,7 +1,7 @@
 import Component_ListItem from "@/components/cListItem/index.vue";
 
 export default {
-  name: "default",
+  name: "vApp",
   props: {},
   components: {
     Component_ListItem
@@ -27,7 +27,10 @@ export default {
   beforeCreate: function() {},
   created: function() {},
   beforeMounted: function() {},
-  mounted: function() {},
+  mounted: function() {
+    console.log(`app mounted`);
+    this.$store.dispatch("Init");
+  },
   beforeUpdate: function() {},
   updated: function() {},
   beforeDestroy: function() {},
