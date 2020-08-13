@@ -1,5 +1,12 @@
 export default {
   name: "cListItem",
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
+      }
+    }
+  },
   props: {
     props_dataIndex: {
       type: Number,
@@ -8,7 +15,9 @@ export default {
   },
   components: {},
   data: function() {
-    return {};
+    return {
+      editorContent: null
+    };
   },
   methods: {
     onDoneHandler: function() {
@@ -16,6 +25,16 @@ export default {
         index: this.props_dataIndex,
         done: !this.data.done
       });
+    },
+    onEditHandler: function() {
+      this.editorContent = this.data.content;
+    },
+    onCancelHandler: function() {
+      this.editorContent = null;
+    },
+    onSubmitHandler: function() {
+      console.log("onSubmitHandler / Editor content: ", this.editorContent);
+      this.editorContent = null;
     },
     onDeleteHandler: function() {
       this.$store.commit("DELETE_TODO", this.props_dataIndex);

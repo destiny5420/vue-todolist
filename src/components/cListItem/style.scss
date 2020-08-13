@@ -3,7 +3,7 @@
   src: url("../../fonts/NotoSansCJKtc-Light.otf");
 }
 
-span {
+* {
   font-family: "TCH-Light";
 }
 
@@ -54,7 +54,7 @@ $todo_checkbox_vh: 16px;
       border-bottom: 3px solid transparent;
       transform: rotate(-40deg);
 
-      animation: fadeOut linear 0.1s;
+      // animation: fadeOut linear 0.1s;
     }
 
     &.check::before {
@@ -123,4 +123,19 @@ $todo_checkbox_vh: 16px;
 .done-text {
   text-decoration: line-through;
   color: #79797998;
+}
+
+.todo-item-edit {
+  width: 100%;
+  height: 100%;
+  padding: 0px 10px;
+
+  font-size: 18px;
+  color: #55555598;
+
+  outline: none;
+  background-color: #dadada98;
+
+  border-width: 0px;
+  border-radius: 5px;
 }

@@ -1,11 +1,25 @@
 <div class="todo-item">
-  <div class="todo-check-box" @click="onDoneHandler">
-    <div :class="classCheckBox"></div>
-  </div>
-  <div class="todo-text">
-    <span :class="classText">{{ data.context }}</span>
-  </div>
-  <div class="todo-del" @click="onDeleteHandler">
-    <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />
-  </div>
+  <input
+    class="todo-item-edit"
+    type="text"
+    v-if="editorContent !== null"
+    v-focus
+    v-model.trim="editorContent"
+    @keyup.enter="onSubmitHandler"
+    @keyup.esc="onCancelHandler"
+    @blur="onCancelHandler"
+  />
+  <template v-else>
+    <div class="todo-check-box" @click="onDoneHandler">
+      <div :class="classCheckBox"></div>
+    </div>
+    <div class="todo-text">
+      <span :class="classText" @dblclick="onEditHandler"
+        >{{ data.context }}</span
+      >
+    </div>
+    <div class="todo-del" @click="onDeleteHandler">
+      <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />
+    </div>
+  </template>
 </div>
