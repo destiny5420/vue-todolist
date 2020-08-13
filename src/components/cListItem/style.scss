@@ -90,9 +90,11 @@ $todo_checkbox_vh: 16px;
 
 .todo-text {
   flex: 4;
+
   width: 150px;
-  // height: $todo_item_height;
   display: inline-block;
+
+  cursor: pointer;
 
   text-align: left;
   display: inline-flex;

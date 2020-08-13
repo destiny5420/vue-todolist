@@ -31,7 +31,7 @@ export default {
   created: function() {},
   beforeMounted: function() {},
   mounted: function() {
-    this.$store.dispatch("Init");
+    this.$store.dispatch("Load");
   },
   beforeUpdate: function() {},
   updated: function() {},

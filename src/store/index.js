@@ -40,6 +40,16 @@ const JsonServer = {
       });
 
     return "";
+  },
+  Modify: async function(dataID, data) {
+    let result;
+    await axios
+      .patch(`${process.env.VUE_APP_HOST}/datas/${dataID}`, data)
+      .then(response => {
+        result = response;
+      });
+
+    return result;
   }
 };
 
@@ -81,10 +91,15 @@ export default new Vuex.Store({
     ADD_TODO: function(state, data) {
       state.todoDatas.push(data);
     },
-    MODIFY_TODO: function(state, { index, done }) {
-      state.todoDatas[index].done = done;
+    MODIFY_TODO: function(state, modifyData) {
+      const matchIndex = state.todoDatas.findIndex(
+        item => item.id === modifyData.data.id
+      );
 
-      JsonServer.Save(state.todoDatas);
+      if (matchIndex !== -1) {
+        Vue.set(state.todoDatas, matchIndex, modifyData.data);
+        // state.todoDatas[matchIndex] = modifyData.data;
+      }
     },
     DELETE_TODO: function(state, dataID) {
       const removeIndex = state.todoDatas.findIndex(item => item.id === dataID);
@@ -95,7 +110,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    Init: function(context) {
+    Load: function(context) {
       JsonServer.Load()
         .then(resultData => {
           context.commit("SET_TODO", resultData.data);
@@ -122,7 +137,15 @@ export default new Vuex.Store({
           console.error(err);
         });
     },
-    Modify: function() {}
+    Modify: function(context, { dataID, modifyData }) {
+      JsonServer.Modify(dataID, modifyData)
+        .then(resultData => {
+          context.commit("MODIFY_TODO", resultData);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   },
   modules: {}
 });
