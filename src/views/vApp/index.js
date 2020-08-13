@@ -41,6 +41,13 @@ export default {
     onSubmitHandler: function() {
       console.log(" -- onSubmitHandler / content: ", this.taskPanel.content);
 
+      if (this.taskPanel.content) {
+        this.$store.dispatch("Add", {
+          content: this.taskPanel.content,
+          done: false
+        });
+      }
+
       this._closeTaskPanel();
     },
     _closeTaskPanel: function() {

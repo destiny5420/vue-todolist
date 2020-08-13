@@ -4,6 +4,11 @@
       "id": 1,
       "content": "我就是幼稚",
       "done": false
+    },
+    {
+      "content": "我想要去海邊游泳",
+      "done": false,
+      "id": 3
     }
   ],
   "posts": [

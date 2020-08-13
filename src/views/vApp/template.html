@@ -47,7 +47,7 @@
           type="text"
           :placeholder="taskPanel.placeholder"
           v-focus
-          v-model="taskPanel.content"
+          v-model.trim="taskPanel.content"
           @keyup.enter="onSubmitHandler"
           @keyup.esc="_closeTaskPanel"
         />

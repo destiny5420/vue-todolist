@@ -18,8 +18,12 @@
         >{{ data.content }}</span
       >
     </div>
-    <div class="todo-del" @click="onDeleteHandler">
-      <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />
+    <div class="todo-del">
+      <font-awesome-icon
+        @click="onDeleteHandler"
+        style="font-size: 20px;"
+        icon="trash-alt"
+      />
     </div>
   </template>
 </div>
