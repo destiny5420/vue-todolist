@@ -9,6 +9,21 @@
       "content": "我想要去海邊游泳",
       "done": false,
       "id": 3
+    },
+    {
+      "content": "去溜冰",
+      "done": false,
+      "id": 4
+    },
+    {
+      "content": "去海邊玩水",
+      "done": false,
+      "id": 5
+    },
+    {
+      "content": "今天天氣很好",
+      "done": false,
+      "id": 6
     }
   ],
   "posts": [

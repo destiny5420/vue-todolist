@@ -23,6 +23,12 @@ export default {
     };
   },
   methods: {
+    classMask: function() {
+      return {
+        "opacity-fede-in": this.taskPanel.open,
+        "opacity-fede-out": !this.taskPanel.open
+      };
+    },
     onListHandler: function() {
       console.log(" -- listHandler");
     },
@@ -30,11 +36,9 @@ export default {
       console.log(" -- onDoneHandler");
     },
     onTaskHandler: function() {
-      console.log(" -- onDoneHandler");
+      console.log(" -- onDoneHandler / status: ", this.taskPanel.open);
 
-      if (this.taskPanel.open) {
-        this.onSubmitHandler();
-      } else {
+      if (!this.taskPanel.open) {
         this.taskPanel.open = !this.taskPanel.open;
       }
     },
@@ -48,11 +52,23 @@ export default {
         });
       }
 
-      this._closeTaskPanel();
+      this.onCloseTaskPanel();
     },
-    _closeTaskPanel: function() {
+    onCloseTaskPanel: function() {
       this.taskPanel.open = false;
       this.taskPanel.content = null;
+    },
+    onCommandHandler: function(e) {
+      switch (e) {
+        case 27:
+          {
+            // esc
+            if (this.taskPanel.open === true) {
+              this.onCloseTaskPanel();
+            }
+          }
+          break;
+      }
     }
   },
   computed: {
@@ -66,7 +82,9 @@ export default {
   },
   // life cycle
   beforeCreate: function() {},
-  created: function() {},
+  created: function() {
+    window.addEventListener("keyup", this.onCommandHandler);
+  },
   beforeMounted: function() {},
   mounted: function() {
     this.$store.dispatch("Load");

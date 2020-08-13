@@ -14,6 +14,7 @@ $nav-width: 350px;
 #app {
   height: 100vh;
   color: $app-color;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,8 +53,8 @@ $nav-width: 350px;
   width: 50px;
   height: 50px;
   background-color: #fdcb6e;
+  position: relative;
   border-radius: 50%;
-
   box-shadow: 7px 7px 14px -3px #00000030;
 
   cursor: pointer;
@@ -63,6 +64,38 @@ $nav-width: 350px;
   &:hover {
     background-color: #dfaa48;
   }
+}
+
+$hamburger_width: 45%;
+$hamburger_height: 5px;
+#hamburger {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+
+  transition: 0.25s ease-in-out;
+
+  > div {
+    width: $hamburger_width;
+    height: $hamburger_height;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: calc(50% - (#{$hamburger_height} / 2));
+    left: calc((100% - #{$hamburger_width}) / 2);
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: $hamburger_height;
+      background-color: rgb(255, 255, 255);
+      position: absolute;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.reg_45reg {
+  transform: rotate(45deg);
 }
 
 .choiceParent.active {
@@ -139,19 +172,20 @@ $nva-body-padding-v: 20px;
 
 #task {
   position: relative;
+  z-index: 2;
 }
 
 $arrow_box_padding: 5px;
 $arrow_box_color: #f7f7f7;
 .arrow_box {
   width: calc(#{$nav-width} - (#{$arrow_box_padding} * 2));
-  height: 90px;
+  height: 65px;
 
   position: absolute;
-  top: -100px;
+  top: -80px;
   margin: $arrow_box_padding;
   background: $arrow_box_color;
-  border-radius: 10px;
+  border-radius: 7px;
 
   display: flex;
   flex-direction: row;
@@ -179,7 +213,7 @@ $arrow_box_color: #f7f7f7;
   }
 
   .arrow_box_area {
-    width: 90%;
+    width: 94%;
     height: 70%;
 
     display: flex;
@@ -201,17 +235,26 @@ $arrow_box_color: #f7f7f7;
       padding: 0px 10px;
       flex: 3;
 
-      font-size: 16px;
+      font-size: 18px;
       width: calc(100% - (10px * 2));
       outline: none;
       border: 0px solid transparent;
       background-color: #bbbaba54;
+      box-shadow: inset 0px 0px 3px 0px rgba(54, 54, 54, 0.295);
     }
   }
 }
 
 .opacity-fede-in {
   animation: Opacity_FadeIn linear 0.2s;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.opacity-fede-out {
+  animation: Opacity_FadeOut linear 0.2s;
+  pointer-events: none;
+  opacity: 0;
 }
 
 @keyframes Opacity_FadeIn {
@@ -222,4 +265,22 @@ $arrow_box_color: #f7f7f7;
   to {
     opacity: 1;
   }
+}
+
+@keyframes Opacity_FadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(71, 71, 71, 0.61);
+  position: absolute;
+  z-index: 1;
 }

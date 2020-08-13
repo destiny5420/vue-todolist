@@ -31,17 +31,17 @@
     </div>
   </div>
   <div id="task">
-    <div id="task-btn" @click="onTaskHandler"></div>
+    <div id="task-btn" @click="onTaskHandler">
+      <div id="hamburger" :class="{ 'reg_45reg': taskPanel.open }">
+        <div></div>
+      </div>
+    </div>
     <div
       class="arrow_box"
       :class="{ 'opacity-fede-in': taskPanel.open }"
       v-if="taskPanel.open"
     >
       <div class="arrow_box_area">
-        <div>
-          <div>What do you want to do?</div>
-          <input type="button" value="del" />
-        </div>
         <input
           class="arrow_box_input"
           type="text"
@@ -49,9 +49,14 @@
           v-focus
           v-model.trim="taskPanel.content"
           @keyup.enter="onSubmitHandler"
-          @keyup.esc="_closeTaskPanel"
+          @keyup.esc="onCloseTaskPanel"
+          @blur="onCloseTaskPanel"
         />
       </div>
     </div>
   </div>
+  <div
+    id="mask"
+    :class="{ 'opacity-fede-in': taskPanel.open, 'opacity-fede-out': !taskPanel.open}"
+  ></div>
 </div>

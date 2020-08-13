@@ -47,8 +47,6 @@ export default {
       this.editorContent = null;
     },
     onDeleteHandler: function() {
-      //this.$store.dispatch("Add", { content: "今天來玩耍", done: false });
-      // this.$store.commit("DELETE_TODO", this.props_dataIndex);
       this.$store.dispatch("Delete", this.data.id);
     }
   },

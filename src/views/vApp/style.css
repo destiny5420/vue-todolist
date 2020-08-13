@@ -10,6 +10,7 @@
 #app {
   height: 100vh;
   color: #2c3e50;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,6 +67,7 @@
   width: 50px;
   height: 50px;
   background-color: #fdcb6e;
+  position: relative;
   border-radius: 50%;
   -webkit-box-shadow: 7px 7px 14px -3px #00000030;
           box-shadow: 7px 7px 14px -3px #00000030;
@@ -76,6 +78,39 @@
 
 #task-btn:hover {
   background-color: #dfaa48;
+}
+
+#hamburger {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+#hamburger > div {
+  width: 45%;
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  top: calc(50% - (5px / 2));
+  left: calc((100% - 45%) / 2);
+}
+
+#hamburger > div::after {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.reg_45reg {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .choiceParent.active {
@@ -155,16 +190,17 @@
 
 #task {
   position: relative;
+  z-index: 2;
 }
 
 .arrow_box {
   width: calc(350px - (5px * 2));
-  height: 90px;
+  height: 65px;
   position: absolute;
-  top: -100px;
+  top: -80px;
   margin: 5px;
   background: #f7f7f7;
-  border-radius: 10px;
+  border-radius: 7px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -198,7 +234,7 @@
 }
 
 .arrow_box .arrow_box_area {
-  width: 90%;
+  width: 94%;
   height: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -234,16 +270,27 @@
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
-  font-size: 16px;
+  font-size: 18px;
   width: calc(100% - (10px * 2));
   outline: none;
   border: 0px solid transparent;
   background-color: #bbbaba54;
+  -webkit-box-shadow: inset 0px 0px 3px 0px rgba(54, 54, 54, 0.295);
+          box-shadow: inset 0px 0px 3px 0px rgba(54, 54, 54, 0.295);
 }
 
 .opacity-fede-in {
   -webkit-animation: Opacity_FadeIn linear 0.2s;
           animation: Opacity_FadeIn linear 0.2s;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.opacity-fede-out {
+  -webkit-animation: Opacity_FadeOut linear 0.2s;
+          animation: Opacity_FadeOut linear 0.2s;
+  pointer-events: none;
+  opacity: 0;
 }
 
 @-webkit-keyframes Opacity_FadeIn {
@@ -262,5 +309,31 @@
   to {
     opacity: 1;
   }
+}
+
+@-webkit-keyframes Opacity_FadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes Opacity_FadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(71, 71, 71, 0.61);
+  position: absolute;
+  z-index: 1;
 }
 /*# sourceMappingURL=style.css.map */
