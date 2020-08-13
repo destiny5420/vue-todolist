@@ -18,11 +18,28 @@ const JsonServer = {
     const dataInfo = {
       todo: data
     };
-    axios
-      .put(`${process.env.VUE_APP_HOST}/datas/0`, dataInfo)
+    axios.put(`${process.env.VUE_APP_HOST}/datas`, dataInfo).then(response => {
+      console.log("-- Save response: ", response);
+    });
+  },
+  Add: async function(data) {
+    let result;
+    await axios
+      .post(`${process.env.VUE_APP_HOST}/datas`, data)
       .then(response => {
-        console.log("-- Save response: ", response);
+        result = response;
       });
+
+    return result;
+  },
+  Delete: async function(dataID) {
+    await axios
+      .delete(`${process.env.VUE_APP_HOST}/datas/${dataID}`)
+      .then(response => {
+        console.log("-- Delete Result: ", response);
+      });
+
+    return "";
   }
 };
 
@@ -60,30 +77,52 @@ export default new Vuex.Store({
   mutations: {
     SET_TODO: function(state, data) {
       state.todoDatas = data;
-
-      JsonServer.Save(state.todoDatas);
+    },
+    ADD_TODO: function(state, data) {
+      state.todoDatas.push(data);
     },
     MODIFY_TODO: function(state, { index, done }) {
       state.todoDatas[index].done = done;
 
       JsonServer.Save(state.todoDatas);
     },
-    DELETE_TODO: function(state, index) {
-      state.todoDatas.splice(index, 1);
+    DELETE_TODO: function(state, dataID) {
+      const removeIndex = state.todoDatas.findIndex(item => item.id === dataID);
 
-      JsonServer.Save(state.todoDatas);
+      if (removeIndex !== -1) {
+        state.todoDatas.splice(removeIndex, 1);
+      }
     }
   },
   actions: {
     Init: function(context) {
       JsonServer.Load()
         .then(resultData => {
-          context.commit("SET_TODO", resultData.data[0].todo);
+          context.commit("SET_TODO", resultData.data);
         })
         .catch(response => {
           console.error(response);
         });
-    }
+    },
+    Add: function(context, data) {
+      JsonServer.Add(data)
+        .then(resultData => {
+          context.commit("ADD_TODO", resultData.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    Delete: function(context, dataID) {
+      JsonServer.Delete(dataID)
+        .then(() => {
+          context.commit("DELETE_TODO", dataID);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    Modify: function() {}
   },
   modules: {}
 });
