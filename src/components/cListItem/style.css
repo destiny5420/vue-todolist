@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "TCH-Light";
+  src: url("../../fonts/NotoSansCJKtc-Light.otf");
+}
+
+span {
+  font-family: "TCH-Light";
+}
+
 .todo-item {
   padding: 10px;
   height: 40px;

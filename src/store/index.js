@@ -62,6 +62,16 @@ export default new Vuex.Store({
       state.todoDatas = data;
 
       JsonServer.Save(state.todoDatas);
+    },
+    MODIFY_TODO: function(state, { index, done }) {
+      state.todoDatas[index].done = done;
+
+      JsonServer.Save(state.todoDatas);
+    },
+    DELETE_TODO: function(state, index) {
+      state.todoDatas.splice(index, 1);
+
+      JsonServer.Save(state.todoDatas);
     }
   },
   actions: {

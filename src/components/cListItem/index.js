@@ -1,30 +1,29 @@
 export default {
   name: "cListItem",
   props: {
-    porps_dataIndex: {
+    props_dataIndex: {
       type: Number,
       required: true
     }
   },
   components: {},
   data: function() {
-    return {
-      content: "請在此輸入內容",
-      done: false
-    };
+    return {};
   },
   methods: {
     onDoneHandler: function() {
-      console.log("-- onDoneHandler");
-      this.done = !this.done;
+      this.$store.commit("MODIFY_TODO", {
+        index: this.props_dataIndex,
+        done: !this.data.done
+      });
     },
     onDeleteHandler: function() {
-      console.log(" -- onDeleteHandler");
+      this.$store.commit("DELETE_TODO", this.props_dataIndex);
     }
   },
   computed: {
     data: function() {
-      return this.$store.state.todoDatas[this.porps_dataIndex];
+      return this.$store.state.todoDatas[this.props_dataIndex];
     },
     classText: function() {
       return {
