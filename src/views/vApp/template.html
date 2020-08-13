@@ -23,7 +23,11 @@
       </div>
     </div>
     <div id="nva-body">
-      <Component_ListItem v-for="(item, index) in 10" :key="index" />
+      <Component_ListItem
+        v-for="(item, index) in datas"
+        :key="index"
+        :porps_dataIndex="item"
+      />
     </div>
   </div>
   <div id="task">

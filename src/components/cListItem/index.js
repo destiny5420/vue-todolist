@@ -1,6 +1,11 @@
 export default {
   name: "cListItem",
-  props: {},
+  props: {
+    porps_dataIndex: {
+      type: Number,
+      required: true
+    }
+  },
   components: {},
   data: function() {
     return {
@@ -18,14 +23,17 @@ export default {
     }
   },
   computed: {
+    data: function() {
+      return this.$store.state.todoDatas[this.porps_dataIndex];
+    },
     classText: function() {
       return {
-        "done-text": this.done
+        "done-text": this.data.done
       };
     },
     classCheckBox: function() {
       return {
-        check: this.done
+        check: this.data.done
       };
     }
   },

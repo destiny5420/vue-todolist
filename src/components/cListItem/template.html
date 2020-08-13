@@ -3,7 +3,7 @@
     <div :class="classCheckBox"></div>
   </div>
   <div class="todo-text">
-    <span :class="classText">{{content}}</span>
+    <span :class="classText">{{ data.context }}</span>
   </div>
   <div class="todo-del" @click="onDeleteHandler">
     <font-awesome-icon style="font-size: 20px;" icon="trash-alt" />

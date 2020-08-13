@@ -21,6 +21,9 @@ export default {
     currentRouter: function() {
       // return this.$route.name; for route
       return this.$store.getters["currentRouteName"]; // for vuex-route-sync
+    },
+    datas: function() {
+      return this.$store.getters["dataByRoute"];
     }
   },
   // life cycle
@@ -28,7 +31,6 @@ export default {
   created: function() {},
   beforeMounted: function() {},
   mounted: function() {
-    console.log(`app mounted`);
     this.$store.dispatch("Init");
   },
   beforeUpdate: function() {},
