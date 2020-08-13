@@ -22,7 +22,7 @@ export default {
       // return this.$route.name; for route
       return this.$store.getters["currentRouteName"]; // for vuex-route-sync
     },
-    datas: function() {
+    dataIndexList: function() {
       return this.$store.getters["dataByRoute"];
     }
   },
@@ -31,7 +31,7 @@ export default {
   created: function() {},
   beforeMounted: function() {},
   mounted: function() {
-    this.$store.dispatch("Init");
+    this.$store.dispatch("Load");
   },
   beforeUpdate: function() {},
   updated: function() {},

@@ -135,6 +135,7 @@
           flex: 4;
   width: 150px;
   display: inline-block;
+  cursor: pointer;
   text-align: left;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;

@@ -21,9 +21,11 @@ export default {
   },
   methods: {
     onDoneHandler: function() {
-      this.$store.commit("MODIFY_TODO", {
-        index: this.props_dataIndex,
-        done: !this.data.done
+      this.$store.dispatch("Modify", {
+        dataID: this.data.id,
+        modifyData: {
+          done: !this.data.done
+        }
       });
     },
     onEditHandler: function() {
@@ -34,10 +36,20 @@ export default {
     },
     onSubmitHandler: function() {
       console.log("onSubmitHandler / Editor content: ", this.editorContent);
+
+      this.$store.dispatch("Modify", {
+        dataID: this.data.id,
+        modifyData: {
+          content: this.editorContent
+        }
+      });
+
       this.editorContent = null;
     },
     onDeleteHandler: function() {
-      this.$store.commit("DELETE_TODO", this.props_dataIndex);
+      //this.$store.dispatch("Add", { content: "今天來玩耍", done: false });
+      // this.$store.commit("DELETE_TODO", this.props_dataIndex);
+      this.$store.dispatch("Delete", this.data.id);
     }
   },
   computed: {
