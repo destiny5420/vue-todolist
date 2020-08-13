@@ -239,30 +239,39 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.arrow_box .arrow_box_area > div {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
-.arrow_box .arrow_box_area > div div {
-  display: inline-block;
+.arrow_box .arrow_box_area div {
+  padding: 0 5px;
+  width: 30px;
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.arrow_box .arrow_box_area div svg {
+  -webkit-transition: 0.15s linear;
+  transition: 0.15s linear;
+}
+
+.arrow_box .arrow_box_area div:hover svg {
+  color: #2ecc71;
 }
 
 .arrow_box .arrow_box_area .arrow_box_input {
@@ -271,7 +280,6 @@
       -ms-flex: 3;
           flex: 3;
   font-size: 18px;
-  width: calc(100% - (10px * 2));
   outline: none;
   border: 0px solid transparent;
   background-color: #bbbaba54;

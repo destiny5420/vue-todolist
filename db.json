@@ -3,27 +3,17 @@
     {
       "id": 1,
       "content": "我就是幼稚",
-      "done": false
+      "done": true
     },
     {
-      "content": "我想要去海邊游泳",
+      "content": "天氣很好",
       "done": false,
-      "id": 3
+      "id": 8
     },
     {
-      "content": "去溜冰",
+      "content": "吃香蕉",
       "done": false,
-      "id": 4
-    },
-    {
-      "content": "去海邊玩水",
-      "done": false,
-      "id": 5
-    },
-    {
-      "content": "今天天氣很好",
-      "done": false,
-      "id": 6
+      "id": 9
     }
   ],
   "posts": [

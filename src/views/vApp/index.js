@@ -36,7 +36,7 @@ export default {
       console.log(" -- onDoneHandler");
     },
     onTaskHandler: function() {
-      console.log(" -- onDoneHandler / status: ", this.taskPanel.open);
+      console.log(" -- onTaskHandler / status: ", this.taskPanel.open);
 
       if (!this.taskPanel.open) {
         this.taskPanel.open = !this.taskPanel.open;

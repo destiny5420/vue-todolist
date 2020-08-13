@@ -12,10 +12,11 @@ import {
   faUserSecret,
   faList,
   faCalendarCheck,
-  faTrashAlt
+  faTrashAlt,
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faUserSecret, faList, faCalendarCheck, faTrashAlt);
+library.add(faUserSecret, faList, faCalendarCheck, faTrashAlt, faCheck);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 // vuex-router-sync

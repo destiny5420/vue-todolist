@@ -217,26 +217,34 @@ $arrow_box_color: #f7f7f7;
     height: 70%;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
-    > div {
-      flex: 2;
+    div {
+      padding: 0 5px;
+      width: 30px;
+      margin-left: 10px;
 
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-      div {
-        display: inline-block;
+      cursor: pointer;
+
+      svg {
+        transition: 0.15s linear;
+      }
+
+      &:hover svg {
+        color: #2ecc71;
       }
     }
 
     .arrow_box_input {
       padding: 0px 10px;
       flex: 3;
-
       font-size: 18px;
-      width: calc(100% - (10px * 2));
+      // width: calc(100% - (10px * 2));
       outline: none;
       border: 0px solid transparent;
       background-color: #bbbaba54;
