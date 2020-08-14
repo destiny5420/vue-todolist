@@ -19,7 +19,8 @@ export default {
         open: false,
         content: null,
         placeholder: "你想要新增什麼事項呢?"
-      }
+      },
+      menuShow: false
     };
   },
   methods: {
@@ -30,20 +31,19 @@ export default {
       };
     },
     onListHandler: function() {
-      console.log(" -- listHandler");
+      //console.log(" -- listHandler");
     },
     onDoneHandler: function() {
-      console.log(" -- onDoneHandler");
+      //console.log(" -- onDoneHandler");
     },
     onTaskHandler: function() {
-      console.log(" -- onTaskHandler / status: ", this.taskPanel.open);
-
       if (!this.taskPanel.open) {
         this.taskPanel.open = !this.taskPanel.open;
       }
+      console.log(" -- onTaskHandler / status: ", this.taskPanel.open);
     },
     onSubmitHandler: function() {
-      console.log(" -- onSubmitHandler / content: ", this.taskPanel.content);
+      //console.log(" -- onSubmitHandler / content: ", this.taskPanel.content);
 
       if (this.taskPanel.content) {
         this.$store.dispatch("Add", {
@@ -69,6 +69,22 @@ export default {
           }
           break;
       }
+    },
+    onDocumentClickHandler: function(e) {
+      if (this.taskPanel.open) {
+        let chatWindow = document.getElementById("arrow_box");
+
+        if (chatWindow === e.target) {
+          return;
+        }
+
+        if (chatWindow.contains(e.target)) {
+          return;
+        }
+
+        this.onCloseTaskPanel();
+        console.log("可以消失面板了");
+      }
     }
   },
   computed: {
@@ -87,10 +103,14 @@ export default {
   },
   beforeMounted: function() {},
   mounted: function() {
+    console.log("--mounted");
     this.$store.dispatch("Load");
+    document.addEventListener("click", this.onDocumentClickHandler);
   },
   beforeUpdate: function() {},
   updated: function() {},
-  beforeDestroy: function() {},
+  beforeDestroy: function() {
+    window.removeEventListener("keyup", this.onCommandHandler);
+  },
   Destroy: function() {}
 };
