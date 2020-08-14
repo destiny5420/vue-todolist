@@ -41,7 +41,6 @@
       id="arrow_box"
       class="arrow_box"
       :class="{ 'opacity-fede-in': taskPanel.open }"
-      v-if="taskPanel.open"
     >
       <div class="arrow_box_area">
         <input
@@ -52,6 +51,7 @@
           v-model.trim="taskPanel.content"
           @keyup.enter="onSubmitHandler"
           @keyup.esc="onCloseTaskPanel"
+          :disabled="!taskPanel.open"
         />
         <div @click="onSubmitHandler">
           <font-awesome-icon style="font-size: 25px;" icon="check" />
