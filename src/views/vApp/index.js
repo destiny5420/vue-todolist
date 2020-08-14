@@ -82,7 +82,7 @@ export default {
           return;
         }
 
-        this.onCloseTaskPanel();
+        //this.onCloseTaskPanel();
         console.log("可以消失面板了");
       }
     }

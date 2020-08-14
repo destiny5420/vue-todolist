@@ -49,9 +49,11 @@ $nav-width: 350px;
   align-items: center;
 }
 
+$task-btn-width: 50px;
+$task-btn-height: 50px;
 #task-btn {
-  width: 50px;
-  height: 50px;
+  width: $task-btn-width;
+  height: $task-btn-height;
   background-color: #fdcb6e;
   position: relative;
   border-radius: 50%;
@@ -67,7 +69,8 @@ $nav-width: 350px;
 }
 
 $hamburger_width: 45%;
-$hamburger_height: 5px;
+$hamburger_height: 8px;
+$plus: 75%;
 #hamburger {
   width: 100%;
   height: 100%;
@@ -75,23 +78,44 @@ $hamburger_height: 5px;
 
   transition: 0.25s ease-in-out;
 
-  > div {
-    width: $hamburger_width;
+  &::before {
+    content: "";
+    top: ($task-btn-height / 2) - ($hamburger_height / 2);
+    left: ($task-btn-width / 2) - ($task-btn-width * 0.55 / 2);
+    width: 55%;
     height: $hamburger_height;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    top: calc(50% - (#{$hamburger_height} / 2));
-    left: calc((100% - #{$hamburger_width}) / 2);
-
-    &::after {
-      content: "";
-      width: 100%;
-      height: $hamburger_height;
-      background-color: rgb(255, 255, 255);
-      position: absolute;
-      transform: rotate(90deg);
-    }
   }
+
+  &::after {
+    content: "";
+    top: ($task-btn-height / 2) - ($hamburger_height / 2);
+    left: ($task-btn-width / 2) - ($task-btn-width * 0.55 / 2);
+    width: 55%;
+    height: $hamburger_height;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    transform: rotate(90deg);
+  }
+
+  // > div {
+  //   width: $hamburger_width;
+  //   height: $hamburger_height;
+  //   background-color: rgb(255, 255, 255);
+  //   position: absolute;
+  //   top: calc(50% - (#{$hamburger_height} / 2));
+  //   left: calc((100% - #{$hamburger_width}) / 2);
+
+  //   &::after {
+  //     content: "";
+  //     width: 100%;
+  //     height: $hamburger_height;
+  //     background-color: rgb(255, 255, 255);
+  //     position: absolute;
+  //     transform: rotate(90deg);
+  //   }
+  // }
 }
 
 .reg_45reg {
@@ -253,18 +277,6 @@ $arrow_box_color: #f7f7f7;
   }
 }
 
-.opacity-fede-in {
-  animation: Opacity_FadeIn linear 0.2s;
-  pointer-events: auto;
-  opacity: 1;
-}
-
-.opacity-fede-out {
-  animation: Opacity_FadeOut linear 0.2s;
-  pointer-events: none;
-  opacity: 0;
-}
-
 @keyframes Opacity_FadeIn {
   from {
     opacity: 0;
@@ -285,10 +297,23 @@ $arrow_box_color: #f7f7f7;
   }
 }
 
-#mask {
+.mask {
   width: 100%;
   height: 100%;
   background-color: rgba(71, 71, 71, 0.61);
   position: absolute;
   z-index: 1;
+
+  opacity: 0;
+  transition: opacity 0.15s linear 0s;
+}
+
+.opacity-fede-in {
+  opacity: 1;
+}
+
+.opacity-fede-out {
+  animation: Opacity_FadeOut linear 0.2s;
+  pointer-events: none;
+  opacity: 0;
 }

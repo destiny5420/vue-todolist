@@ -30,12 +30,13 @@
       />
     </div>
   </div>
+  <!-- Task section-->
   <div id="task">
+    <!-- button -->
     <div id="task-btn" @click="onTaskHandler">
-      <div id="hamburger" :class="{ 'reg_45reg': taskPanel.open }">
-        <div></div>
-      </div>
+      <div id="hamburger" :class="{ 'reg_45reg': taskPanel.open }"></div>
     </div>
+    <!-- window -->
     <div
       id="arrow_box"
       class="arrow_box"
@@ -58,8 +59,5 @@
       </div>
     </div>
   </div>
-  <div
-    id="mask"
-    :class="{ 'opacity-fede-in': taskPanel.open, 'opacity-fede-out': !taskPanel.open}"
-  ></div>
+  <div class="mask" :class="{ 'opacity-fede-in': taskPanel.open}"></div>
 </div>
