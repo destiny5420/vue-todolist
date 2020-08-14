@@ -1,5 +1,14 @@
 import Component_ListItem from "@/components/cListItem/index.vue";
 
+function getOpacity(obj) {
+  if (getComputedStyle(obj, null)["opacity"]) {
+    return getComputedStyle(obj, null)["opacity"];
+  }
+  return -1;
+}
+
+let chatWindow;
+
 export default {
   name: "vApp",
   directives: {
@@ -40,7 +49,6 @@ export default {
       if (!this.taskPanel.open) {
         this.taskPanel.open = !this.taskPanel.open;
       }
-      console.log(" -- onTaskHandler / status: ", this.taskPanel.open);
     },
     onSubmitHandler: function() {
       //console.log(" -- onSubmitHandler / content: ", this.taskPanel.content);
@@ -71,19 +79,11 @@ export default {
       }
     },
     onDocumentClickHandler: function(e) {
-      if (this.taskPanel.open) {
-        let chatWindow = document.getElementById("arrow_box");
-
-        if (chatWindow === e.target) {
-          return;
-        }
-
-        if (chatWindow.contains(e.target)) {
-          return;
-        }
-
-        //this.onCloseTaskPanel();
-        console.log("可以消失面板了");
+      if (
+        getOpacity(chatWindow) == 1 &&
+        chatWindow.contains(e.target) === false
+      ) {
+        this.onCloseTaskPanel();
       }
     }
   },
@@ -99,18 +99,21 @@ export default {
   // life cycle
   beforeCreate: function() {},
   created: function() {
+    // if you want to observe ESC, using 'keyup' event.
     window.addEventListener("keyup", this.onCommandHandler);
   },
   beforeMounted: function() {},
   mounted: function() {
-    console.log("--mounted");
     this.$store.dispatch("Load");
+
     document.addEventListener("click", this.onDocumentClickHandler);
+    chatWindow = document.getElementById("arrow_box");
   },
   beforeUpdate: function() {},
   updated: function() {},
   beforeDestroy: function() {
     window.removeEventListener("keyup", this.onCommandHandler);
+    document.removeEventListener("click", this.onDocumentClickHandler);
   },
   Destroy: function() {}
 };
