@@ -98,24 +98,6 @@ $plus: 75%;
     position: absolute;
     transform: rotate(90deg);
   }
-
-  // > div {
-  //   width: $hamburger_width;
-  //   height: $hamburger_height;
-  //   background-color: rgb(255, 255, 255);
-  //   position: absolute;
-  //   top: calc(50% - (#{$hamburger_height} / 2));
-  //   left: calc((100% - #{$hamburger_width}) / 2);
-
-  //   &::after {
-  //     content: "";
-  //     width: 100%;
-  //     height: $hamburger_height;
-  //     background-color: rgb(255, 255, 255);
-  //     position: absolute;
-  //     transform: rotate(90deg);
-  //   }
-  // }
 }
 
 .reg_45reg {
@@ -219,10 +201,9 @@ $arrow_box_color: #f7f7f7;
   opacity: 0;
   transition: opacity 0.15s linear 0s;
 
-  &::after,
-  &::before {
+  &::after {
     position: absolute;
-    top: 100%;
+    top: 99%;
     left: 50%;
     border: solid transparent;
     content: " ";
