@@ -249,10 +249,10 @@ $arrow_box_color: #f7f7f7;
     }
 
     .arrow_box_input {
+      width: 100%;
       padding: 0px 10px;
       flex: 3;
       font-size: 18px;
-      // width: calc(100% - (10px * 2));
       outline: none;
       border: 0px solid transparent;
       background-color: #bbbaba54;
