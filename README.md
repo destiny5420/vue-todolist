@@ -1,8 +1,8 @@
 # vue-todolist
-![產品頁面](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/all-list.png)
+![產品頁面](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/todolist_banner.png)
 
 ## 簡介
-此為前端最知名的練習作品 -「TodoList」，主要功能有下列幾項：
+此為前端知名練習作品之一「TodoList」，主要實踐功能如下：
 * 表單的新增、刪除、修正
 * 使用 [json-server](https://www.npmjs.com/package/json-server) 做資料儲存功能
 * [Vue Router](https://router.vuejs.org) 做「所有清單」與「完成清單」的頁面切換
