@@ -14,15 +14,17 @@
 ### 所有清單
 ![所有清單](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/all-list.png)
 
+### 完成清單
+![完成清單](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/done-list.png)
 
+### 新增事項
+![新增事項](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/create.png)
 
+### 刪除事項
+![刪除事項](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/delete.png)
 
-
-
-
-
-
-
+### 清單事項修正
+![清單事項修正](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/editor.png)
 
 
 ## Project setup
