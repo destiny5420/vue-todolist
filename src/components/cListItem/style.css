@@ -1,0 +1,198 @@
+@font-face {
+  font-family: "TCH-Light";
+  src: url("../../fonts/NotoSansCJKtc-Light.otf");
+}
+
+* {
+  font-family: "TCH-Light";
+}
+
+.todo-item {
+  padding: 10px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.todo-check-box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 40px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-check-box div {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #cccccc98;
+  border-radius: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.todo-check-box div::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  width: 10px;
+  height: 5px;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  -webkit-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+}
+
+.todo-check-box div.check::before {
+  border-left: 3px solid #ad80c7;
+  border-bottom: 3px solid #ad80c7;
+  -webkit-animation: fadeIn linear 0.1s;
+          animation: fadeIn linear 0.1s;
+}
+
+@-webkit-keyframes fadeOut {
+  to {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  from {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  from {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  to {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  to {
+    border-left: 3px solid #ad80c7;
+    border-bottom: 3px solid #ad80c7;
+  }
+}
+
+.todo-text {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  width: 150px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: left;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.todo-del {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-del svg {
+  color: #cccccc98;
+  -webkit-transition: color 0.1s linear 0s;
+  transition: color 0.1s linear 0s;
+}
+
+.todo-del svg:hover {
+  color: #d16868;
+  cursor: pointer;
+}
+
+.done-text {
+  text-decoration: line-through;
+  color: #79797998;
+}
+
+.todo-item-edit {
+  width: 100%;
+  height: 100%;
+  padding: 0px 10px;
+  font-size: 18px;
+  color: #55555598;
+  outline: none;
+  background-color: #dadada98;
+  border-width: 0px;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=style.css.map */

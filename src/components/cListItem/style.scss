@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "TCH-Light";
+  src: url("../../fonts/NotoSansCJKtc-Light.otf");
+}
+
+* {
+  font-family: "TCH-Light";
+}
+
+$main-color: #ad80c7;
+$todo-item-height: 40px;
+.todo-item {
+  padding: 10px;
+  height: $todo-item-height;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-items: stretch;
+}
+
+$todo_item_padding_RL: 10px;
+$todo_item_padding_TB: 10px;
+$todo_checkbox_vh: 16px;
+
+.todo-check-box {
+  flex: 1;
+  width: $todo_item_height;
+  // height: $todo_item_height;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    width: $todo_checkbox_vh;
+    height: $todo_checkbox_vh;
+    border: 2px solid #cccccc98;
+    border-radius: 35%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      width: 10px;
+      height: 5px;
+      border-left: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      transform: rotate(-40deg);
+
+      // animation: fadeOut linear 0.1s;
+    }
+
+    &.check::before {
+      border-left: 3px solid $main-color;
+      border-bottom: 3px solid $main-color;
+
+      animation: fadeIn linear 0.1s;
+    }
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  from {
+    border-left: 3px solid $main-color;
+    border-bottom: 3px solid $main-color;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+  to {
+    border-left: 3px solid $main-color;
+    border-bottom: 3px solid $main-color;
+  }
+}
+
+.todo-text {
+  flex: 4;
+
+  width: 150px;
+  display: inline-block;
+
+  cursor: pointer;
+
+  text-align: left;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.todo-del {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: #cccccc98;
+
+    transition: color 0.1s linear 0s;
+
+    &:hover {
+      color: rgb(209, 104, 104);
+      cursor: pointer;
+    }
+  }
+}
+
+.done-text {
+  text-decoration: line-through;
+  color: #79797998;
+}
+
+.todo-item-edit {
+  width: 100%;
+  height: 100%;
+  padding: 0px 10px;
+
+  font-size: 18px;
+  color: #55555598;
+
+  outline: none;
+  background-color: #dadada98;
+
+  border-width: 0px;
+  border-radius: 5px;
+}

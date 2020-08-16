@@ -1,0 +1,67 @@
+<div id="app">
+  <div id="nav">
+    <div id="nva-bar">
+      <div
+        class="choiceParent tl-rad"
+        :class="{ 'active': currentRouter === 'List' }"
+      >
+        <div class="choiceItem">
+          <router-link to="/list" @click="onListHandler"
+            ><font-awesome-icon style="font-size: 25px;" icon="list"
+          /></router-link>
+        </div>
+      </div>
+      <div
+        class="choiceParent tr-rad"
+        :class="{ 'active': currentRouter === 'Done' }"
+      >
+        <div class="choiceItem">
+          <router-link to="/done" @click="onDoneHandler"
+            ><font-awesome-icon style="font-size: 25px;" icon="calendar-check"
+          /></router-link>
+        </div>
+      </div>
+    </div>
+    <div id="nva-body">
+      <Component_ListItem
+        v-for="(item, index) in dataIndexList"
+        :key="index"
+        :props_dataIndex="item"
+      />
+    </div>
+  </div>
+  <!-- Task section-->
+  <div id="task">
+    <!-- button -->
+    <div id="task-btn" @click="onTaskHandler">
+      <div id="hamburger" :class="{ 'reg_45reg': taskPanel.open }"></div>
+    </div>
+    <!-- window -->
+    <div
+      id="arrow_box"
+      class="arrow_box"
+      :class="{ 'opacity-fede-in': taskPanel.open }"
+    >
+      <div class="arrow_box_area">
+        <input
+          class="arrow_box_input"
+          type="text"
+          :placeholder="taskPanel.placeholder"
+          v-focus
+          v-model.trim="taskPanel.content"
+          @keyup.enter="onSubmitHandler"
+          @keyup.esc="onCloseTaskPanel"
+          :disabled="!taskPanel.open"
+        />
+        <div @click="onSubmitHandler">
+          <font-awesome-icon style="font-size: 25px;" icon="check" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="mask"
+    :class="{ 'opacity-fede-in': taskPanel.open }"
+    :style="{ display: taskPanel.open === true ? '' : 'none' }"
+  ></div>
+</div>

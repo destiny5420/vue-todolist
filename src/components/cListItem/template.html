@@ -1,0 +1,29 @@
+<div class="todo-item">
+  <input
+    class="todo-item-edit"
+    type="text"
+    v-if="editorContent !== null"
+    v-focus
+    v-model.trim="editorContent"
+    @keyup.enter="onSubmitHandler"
+    @keyup.esc="onCancelHandler"
+    @blur="onCancelHandler"
+  />
+  <template v-else>
+    <div class="todo-check-box" @click="onDoneHandler">
+      <div :class="classCheckBox"></div>
+    </div>
+    <div class="todo-text">
+      <span :class="classText" @dblclick="onEditHandler"
+        >{{ data.content }}</span
+      >
+    </div>
+    <div class="todo-del">
+      <font-awesome-icon
+        @click="onDeleteHandler"
+        style="font-size: 20px;"
+        icon="trash-alt"
+      />
+    </div>
+  </template>
+</div>
