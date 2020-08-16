@@ -32,7 +32,7 @@
 ![清單事項修正](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/editor.png)
 
 # 專案設置
-因該項目使用json-server作為儲存資料的方式，須先確認該電腦環境已安裝json-server
+因該項目使用[json-server](https://www.npmjs.com/package/json-server)作為儲存資料的方式，須先確認該電腦環境已安裝json-server
 ```
 npm install -g json-server
 ```
