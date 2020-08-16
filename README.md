@@ -62,6 +62,8 @@ npm run serve
 
 比較尷尬的問題是，第一點「+」按鈕會在打開的時候將一個「是否面板打開」的flag做切換，第二點「點擊空白區域關閉」的功能會在面板打開的時候，才去做觸發，第三點剛好「+」號的按鈕也符合「空白區域」的條件。所以會發生當按下+號按鈕時，剛好又觸發了「關閉面板事件」，後來因為面板有做alpha的淡入，所以後來用了alpha來做判斷而解決了這個問題
 
+[點擊『空白區域實作』關閉面板](https://codepen.io/paper_hsiao/pen/KKzVYXy?fbclid=IwAR2bQ5hrcuIh_ThHY_du5iTEKXsJbiwwsHN9N729P7AEbST9PP9ruAJEtSM)
+
 # 待優化事項
 * 更新、刪除尋找對應ID的演算法優化
 * 新增使用Local Storage來做儲存資料方式，簡化Demo流程
