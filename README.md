@@ -32,25 +32,25 @@
 ![清單事項修正](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/editor.png)
 
 # 專案設置
-因該項目使用[json-server](https://www.npmjs.com/package/json-server)作為儲存資料的方式，須先確認該電腦環境已安裝json-server
+1. 因該項目使用[json-server](https://www.npmjs.com/package/json-server)作為儲存資料的方式，須先確認該電腦環境已安裝json-server
 ```
-npm install -g json-server
+2. npm install -g json-server
 ```
 
-使用npm install安裝該專案依賴的package
+3. 使用npm install安裝該專案依賴的package
 ```
 npm install
 ```
 
-此專案json-server預設的port為8888，如該port已被佔用，可至root資料夾下的json-server.json修改，另外在.env.development與.env.production也須修正
+4. 此專案json-server預設的port為8888，如該port已被佔用，可至root資料夾下的json-server.json修改，另外在.env.development與.env.production也須修正
 ![ProjectSetting](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/project-setting.png)
 
-開啟json-server
+5. 開啟json-server
 ```
 npm run open-db
 ```
 
-編譯development
+6. 編譯development
 ```
 npm run serve
 ```
