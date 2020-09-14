@@ -15,7 +15,7 @@
 - 使用 [firebase](https://firebase.google.com/)的做資料儲存
 - [Vue Router](https://router.vuejs.org) 做「所有清單」與「完成清單」的頁面切換
 - 使用 [Vuex](https://vuex.vuejs.org) 做前台資料管理
-- 使用 [vue-axios](https://www.npmjs.com/package/vue-axios) 與 [json-server](https://www.npmjs.com/package/json-server) 做資料存取
+- 使用 [vue-axios](https://www.npmjs.com/package/vue-axios) 做前端資料管理
 - 前台 sass 手刻效果
 
 ## 內容
