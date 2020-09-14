@@ -105,6 +105,22 @@ const Firebase = {
       });
 
     return returnData;
+  },
+  Modify: async function({ dataID, modifyData }) {
+    let api = `${process.env.VUE_APP_HOST}/api/todolist/update`;
+
+    var returnData;
+
+    await axios({
+      url: api,
+      method: "put",
+      data: modifyData,
+      params: { id: dataID }
+    }).then(function(response) {
+      returnData = response;
+    });
+
+    return returnData;
   }
 };
 
@@ -183,12 +199,6 @@ const Database = {
         });
     },
     Delete: function(context, dataID) {
-      // console.log(
-      //   "-- Firebase Delete -- / context: ",
-      //   context,
-      //   " / dataID: ",
-      //   dataID
-      // );
       Firebase.Delete(dataID).then(function(response) {
         if (response === true) {
           context.commit("DELETE_TODO", dataID);
@@ -196,14 +206,13 @@ const Database = {
       });
     },
     Modify: function(context, { dataID, modifyData }) {
-      console.log(
-        "-- Firebase Modify -- / context: ",
-        context,
-        " / dataID: ",
-        dataID,
-        " / modifyData: ",
-        modifyData
-      );
+      Firebase.Modify({ dataID, modifyData })
+        .then(function(response) {
+          context.commit("MODIFY_TODO", response.data);
+        })
+        .catch(function(err) {
+          console.error(err);
+        });
     }
   }
 };
