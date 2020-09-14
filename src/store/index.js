@@ -14,14 +14,6 @@ const JsonServer = {
 
     return datas;
   },
-  Save: function(data) {
-    const dataInfo = {
-      todo: data
-    };
-    axios.put(`${process.env.VUE_APP_HOST}/datas`, dataInfo).then(response => {
-      console.log("-- Save response: ", response);
-    });
-  },
   Add: async function(data) {
     let result;
     await axios
@@ -53,6 +45,56 @@ const JsonServer = {
   }
 };
 
+const Firebase = {
+  Load: async function() {
+    let datas = {
+      data: []
+    };
+    await axios
+      .get(`${process.env.VUE_APP_HOST}/api/todolist/get`)
+      .then(function(response) {
+        if (response.data.success === true) {
+          for (const item in response.data.data) {
+            // console.log(
+            //   "Index: ",
+            //   index,
+            //   " / ID: ",
+            //   item,
+            //   " / Content: ",
+            //   response.data.data[item].content,
+            //   " / Done: ",
+            //   response.data.data[item].done
+            // );
+
+            datas.data.push({
+              content: response.data.data[item].content,
+              done: response.data.data[item].done,
+              id: item
+            });
+          }
+        }
+      });
+
+    return datas;
+  },
+  Delete: async function(datatID) {
+    let api = `${process.env.VUE_APP_HOST}/api/todolist/delete/${datatID}`;
+
+    let returnData = false;
+    await axios
+      .delete(api)
+      .then(response => {
+        console.log("Delete response success: ", response.data.success);
+        returnData = response.data.success;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+    return returnData;
+  }
+};
+
 const DataFilter = {
   List: function(data) {
     return data;
@@ -67,6 +109,85 @@ const DataFilter = {
   //     return data.complete === false;
   //   });
   // },
+};
+
+const Database = {
+  JsonServer: {
+    Load: function(context) {
+      JsonServer.Load()
+        .then(resultData => {
+          context.commit("SET_TODO", resultData.data);
+        })
+        .catch(response => {
+          console.error(response);
+        });
+    },
+    Add: function(context, data) {
+      JsonServer.Add(data)
+        .then(resultData => {
+          context.commit("ADD_TODO", resultData.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    Delete: function(context, dataID) {
+      JsonServer.Delete(dataID)
+        .then(() => {
+          context.commit("DELETE_TODO", dataID);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    Modify: function(context, { dataID, modifyData }) {
+      JsonServer.Modify(dataID, modifyData)
+        .then(resultData => {
+          context.commit("MODIFY_TODO", resultData);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+  },
+  Firebase: {
+    Load: function(context) {
+      Firebase.Load()
+        .then(resultData => {
+          context.commit("SET_TODO", resultData.data);
+        })
+        .catch(function(err) {
+          console.error(err);
+        });
+    },
+    Add: function(context, data) {
+      console.log("-- Firebase Add -- / context: ", context, " / data: ", data);
+    },
+    Delete: function(context, dataID) {
+      // console.log(
+      //   "-- Firebase Delete -- / context: ",
+      //   context,
+      //   " / dataID: ",
+      //   dataID
+      // );
+      Firebase.Delete(dataID).then(function(response) {
+        console.log("Firebase / Delete / Response: ", response);
+        if (response === true) {
+          context.commit("DELETE_TODO", dataID);
+        }
+      });
+    },
+    Modify: function(context, { dataID, modifyData }) {
+      console.log(
+        "-- Firebase Modify -- / context: ",
+        context,
+        " / dataID: ",
+        dataID,
+        " / modifyData: ",
+        modifyData
+      );
+    }
+  }
 };
 
 export default new Vuex.Store({
@@ -111,40 +232,20 @@ export default new Vuex.Store({
   },
   actions: {
     Load: function(context) {
-      JsonServer.Load()
-        .then(resultData => {
-          context.commit("SET_TODO", resultData.data);
-        })
-        .catch(response => {
-          console.error(response);
-        });
+      console.log("Database Type: ", process.env.VUE_APP_DATABASE_TYPE);
+      Database[process.env.VUE_APP_DATABASE_TYPE].Load(context);
     },
     Add: function(context, data) {
-      JsonServer.Add(data)
-        .then(resultData => {
-          context.commit("ADD_TODO", resultData.data);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      Database[process.env.VUE_APP_DATABASE_TYPE].Add(context, data);
     },
     Delete: function(context, dataID) {
-      JsonServer.Delete(dataID)
-        .then(() => {
-          context.commit("DELETE_TODO", dataID);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      Database[process.env.VUE_APP_DATABASE_TYPE].Delete(context, dataID);
     },
     Modify: function(context, { dataID, modifyData }) {
-      JsonServer.Modify(dataID, modifyData)
-        .then(resultData => {
-          context.commit("MODIFY_TODO", resultData);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      Database[process.env.VUE_APP_DATABASE_TYPE].Modify(context, {
+        dataID,
+        modifyData
+      });
     }
   },
   modules: {}
