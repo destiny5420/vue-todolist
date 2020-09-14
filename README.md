@@ -13,9 +13,9 @@
 - 表單的新增、刪除、修正
 - 使用 [json-server](https://www.npmjs.com/package/json-server) 做資料儲存功能
 - 使用 [firebase](https://firebase.google.com/)的做資料儲存
-- [Vue Router](https://router.vuejs.org) 做「所有清單」與「完成清單」的頁面切換
-- 使用 [Vuex](https://vuex.vuejs.org) 做前台資料管理
-- 使用 [vue-axios](https://www.npmjs.com/package/vue-axios) 做前端資料管理
+- [vue-router]](https://router.vuejs.org) 做「所有清單」與「完成清單」的頁面切換
+- 使用 [vuex](https://vuex.vuejs.org) 做前台資料管理
+- 使用 [vue-axios](https://www.npmjs.com/package/vue-axios) 做 ajax
 - 前台 sass 手刻效果
 
 ## 內容
@@ -61,7 +61,7 @@ npm install -g json-server
 npm install
 ```
 
-3. 此專案 json-server 預設的 port 為 8888，如該 port 已被佔用，可至 root 資料夾下的 json-server.json 修改，另外在.env.development與.env.production中，VUE_APP_HOST的port也須修正一致。且須將 VUE_APP_DATABASE_TYPE 設置為 JsonServer
+3. 此專案 json-server 預設的 port 為 8888，如該 port 已被佔用，可至 root 資料夾下的 json-server.json 修改，另外在.env.development 與.env.production 中，VUE_APP_HOST 的 port 也須修正一致。且須將 VUE_APP_DATABASE_TYPE 設置為 JsonServer
 
 ![jsonserver-configure](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/project-setting-json-server.png)
 
