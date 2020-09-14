@@ -50,37 +50,30 @@ const Firebase = {
     let datas = {
       data: []
     };
-    await axios
-      .get(`${process.env.VUE_APP_HOST}/api/todolist/get`)
-      .then(function(response) {
-        if (response.data.success === true) {
-          for (const item in response.data.data) {
-            // console.log(
-            //   "Index: ",
-            //   index,
-            //   " / ID: ",
-            //   item,
-            //   " / Content: ",
-            //   response.data.data[item].content,
-            //   " / Done: ",
-            //   response.data.data[item].done
-            // );
 
-            datas.data.push({
-              content: response.data.data[item].content,
-              done: response.data.data[item].done,
-              id: item
-            });
-          }
+    await axios({
+      url: `${process.env.VUE_APP_HOST}/api/todolist/get`,
+      method: "get",
+      params: { Id: 12345, studentID: 14998055 }
+    }).then(function(response) {
+      if (response.data.success === true) {
+        for (const item in response.data.data) {
+          datas.data.push({
+            content: response.data.data[item].content,
+            done: response.data.data[item].done,
+            id: item
+          });
         }
-      });
+      }
+    });
 
     return datas;
   },
+  Add: async function() {},
   Delete: async function(datatID) {
     let api = `${process.env.VUE_APP_HOST}/api/todolist/delete/${datatID}`;
-
     let returnData = false;
+
     await axios
       .delete(api)
       .then(response => {
