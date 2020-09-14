@@ -61,8 +61,9 @@ npm install -g json-server
 npm install
 ```
 
-3. 此專案 json-server 預設的 port 為 8888，如該 port 已被佔用，可至 root 資料夾下的 json-server.json 修改，另外在.env.development 與.env.production 的 VUE_APP_HOST 的 port 也須修正一致。且須將 VUE_APP_DATABASE_TYPE 設置為 JsonServer
-   ![jsonserver-configure](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/project-setting-json-server.png)
+3. 此專案 json-server 預設的 port 為 8888，如該 port 已被佔用，可至 root 資料夾下的 json-server.json 修改，另外在.env.development與.env.production中，VUE_APP_HOST的port也須修正一致。且須將 VUE_APP_DATABASE_TYPE 設置為 JsonServer
+
+![jsonserver-configure](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/project-setting-json-server.png)
 
 4. 開啟 json-server
 
@@ -79,8 +80,10 @@ npm run serve
 ### Firebase server configure
 
 1. 須將在.env.development 與.env.production 的 VUE_APP_DATABASE_TYPE 設置為 Firebase
+
 2. 須將 VUE_APP_HOST 設定為 Server 的路徑，此專案的預設為 Firebase 的設定
-   ![firebase-configure](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/project-setting-firebase-server.png)
+
+![firebase-configure](https://github.com/destiny5420/vue-todolist/blob/develop/page_source/project-setting-firebase-server.png)
 
 # 結語
 
