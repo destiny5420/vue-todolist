@@ -24,6 +24,7 @@ export default {
       this.$store.dispatch("Modify", {
         dataID: this.data.id,
         modifyData: {
+          content: this.data.content,
           done: !this.data.done
         }
       });
@@ -40,7 +41,8 @@ export default {
       this.$store.dispatch("Modify", {
         dataID: this.data.id,
         modifyData: {
-          content: this.editorContent
+          content: this.editorContent,
+          done: this.data.done
         }
       });
 

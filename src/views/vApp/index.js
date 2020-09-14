@@ -108,6 +108,8 @@ export default {
 
     document.addEventListener("click", this.onDocumentClickHandler);
     chatWindow = document.getElementById("arrow_box");
+
+    console.log(process.env.VUE_APP_HOST);
   },
   beforeUpdate: function() {},
   updated: function() {},
