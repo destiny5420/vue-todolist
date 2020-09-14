@@ -4,13 +4,13 @@
 
 ## Demo
 
-[夢想清單 2.0](destiny5420.github.io/vue-todolist/)
+[夢想清單 2.0](https://destiny5420.github.io/vue-todolist/)
 
 ## 簡介
 
 此為前端知名練習作品之一「TodoList」，主要實踐功能如下：
 
-- 表單的新增、刪除、修正
+- 表單的讀取、新增、刪除、修正
 - 使用 [json-server](https://www.npmjs.com/package/json-server) 做資料儲存功能
 - 使用 [firebase](https://firebase.google.com/)的做資料儲存
 - [vue-router](https://router.vuejs.org) 做「所有清單」與「完成清單」的頁面切換
