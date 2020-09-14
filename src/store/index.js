@@ -84,7 +84,6 @@ const Firebase = {
     await axios
       .delete(api)
       .then(response => {
-        console.log("Delete response success: ", response.data.success);
         returnData = response.data.success;
       })
       .catch(function(err) {
@@ -171,7 +170,6 @@ const Database = {
       //   dataID
       // );
       Firebase.Delete(dataID).then(function(response) {
-        console.log("Firebase / Delete / Response: ", response);
         if (response === true) {
           context.commit("DELETE_TODO", dataID);
         }
