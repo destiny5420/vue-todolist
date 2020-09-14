@@ -53,8 +53,8 @@ const Firebase = {
 
     await axios({
       url: `${process.env.VUE_APP_HOST}/api/todolist/get`,
-      method: "get",
-      params: { Id: 12345, studentID: 14998055 }
+      method: "get"
+      // params: { Id: 12345, studentID: 14998055 }
     }).then(function(response) {
       if (response.data.success === true) {
         for (const item in response.data.data) {
@@ -69,13 +69,34 @@ const Firebase = {
 
     return datas;
   },
-  Add: async function() {},
+  Add: async function(data) {
+    let result;
+    let api = `${process.env.VUE_APP_HOST}/api/todolist/add`;
+    let apiData = {
+      data: data
+    };
+
+    await axios({
+      url: api,
+      method: "post",
+      data: apiData
+    }).then(response => {
+      result = response;
+    });
+
+    return result;
+  },
   Delete: async function(datatID) {
-    let api = `${process.env.VUE_APP_HOST}/api/todolist/delete/${datatID}`;
+    let api = `${process.env.VUE_APP_HOST}/api/todolist/delete`;
     let returnData = false;
 
-    await axios
-      .delete(api)
+    await axios({
+      url: api,
+      method: "delete",
+      params: {
+        id: datatID
+      }
+    })
       .then(response => {
         returnData = response.data.success;
       })
@@ -153,7 +174,13 @@ const Database = {
         });
     },
     Add: function(context, data) {
-      console.log("-- Firebase Add -- / context: ", context, " / data: ", data);
+      Firebase.Add(data)
+        .then(resultData => {
+          context.commit("ADD_TODO", resultData.data.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
     },
     Delete: function(context, dataID) {
       // console.log(
